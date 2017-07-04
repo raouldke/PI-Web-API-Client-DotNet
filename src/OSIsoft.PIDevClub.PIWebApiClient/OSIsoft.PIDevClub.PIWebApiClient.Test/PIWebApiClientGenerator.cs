@@ -27,7 +27,7 @@ namespace OSIsoft.PIDevClub.PIWebApiClient.Test
     {
         public static PIWebApiClient GenerateInstance()
         {
-            return new PIWebApiClient(Constants.BASE_URL, false, "marc.adm", "kk");
+            return new PIWebApiClient(Constants.BASE_URL, true);
         }
     }
 }

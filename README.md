@@ -1,76 +1,144 @@
-PI Web API Client libraries for C#
+PI Web API Client libraries for .NET
 ===
 
+
 ## Organization
-This repository was created following the steps described in this blog post published on PI Square:
-https://pisquare.osisoft.com/community/developers-club/blog/2017/04/06/generating-pi-web-api-client-libraries-for-angularjs-using-swagger
+This repository has the source code package of the PI Web API Client libraries for .NET Framework.
 
-## Installation
+## Requirements
 
-The files that you need to add to your project are on the dist folder. There are two versions of this library piwebapi.js and piwebapi-kerberos.js. 
+ - PI Web API 2017 installed within your domain using Kerberos or Basic Authentication.
+ - .NET Framework 4.5.2
 
-The first option (piwebapi.js or piwebapi.min.js) is the complete version and it can be used with Anonymous, Basic and Kerberos authentication. It requires the angular-base64 module as a dependency. Whenever you choose to use piwebapi.js (or its minified version), make sure to reference angular-base64.js (or its minified version).
 
-The second option (piwebapi-kerberos.js or piwebapi-kerberos.min.js) is very similar to the first version but it is not compatible with Basic Authentication. This version should be used in case you are sure that Basic Authentication will not be used. The advantage of using this library is that you don't need to reference angular-base64 module. 
+ ## Examples
 
-## Using the library on your web application
+There are two PI ProcessBook displays available on the Samples folder of this repository. In addition, please refer to the following examples to understand how to use this library: 
 
-First, when you create your main angular module for your app, make sure to list `piwebapiClientLib` as one of their dependencies.
 
-```js
-var piWebApiApp = angular.module("PiWebApiSampleApp", ['piwebapiClientLib'])
+### Create an intance of the piwebapi top level object.
+
+```vb# 
+    Dim client As New PIWebApiClient
+    Dim connectedToPIWebAPI As Boolean
+    connectedToPIWebAPI = client.Connect("https://marc-web-sql.marc.net/piwebapi", True)
+``` 
+
+If you want to use basic authentication instead of Kerberos, set useKerberos to False and set the username and password accordingly.
+
+
+### Get the PI Data Archive WebId
+
+```vb# 
+    Set dataServer = client.dataServer.GetByName(tbPIDataArchiveName.Text)
 ```
 
-Second, define the PI Web API endpoint:
+### Create a new PI Point
 
-```js
-piwebapi.SetServiceBaseUrl("https://webservername/piwebapi");
+```vb# 
+    Dim response As ApiResponseObject
+    Dim newPIPoint As New PIPoint
+    newPIPoint.Name = "MyNewPIPoint"
+    newPIPoint.Descriptor = "Point created for wrapper test"
+    newPIPoint.PointClass = "classic"
+    newPIPoint.PointType = "Float32"
+    Set response = client.dataServer.CreatePointWithHttpInfo(dataServer.webId, newPIPoint)
 ```
 
-Next, select the authentication method. If you are using Kerberos, then:
+### Get PI Points WebIds
 
-```js
-piwebapi.SetKerberosAuth();
+```vb# 
+    Set point1 = client.point.GetByPath("\\" + tbPIDataArchiveName.Text + "\" + tbTagName1.Text)
+    Set point2 = client.point.GetByPath("\\" + tbPIDataArchiveName.Text + "\" + tbTagName2.Text)
+    Set point3 = client.point.GetByPath("\\" + tbPIDataArchiveName.Text + "\" + tbTagName3.Text)
 ```
 
-However, if you are using Basic Authentication (only available on the full version), then:
+### Get recorded values in bulk using the StreamSet/GetRecordedAdHoc
 
-```js
-piwebapi.SetBasicAuth("username","password");
+```vb# 
+    webIds = point1.webId + "," + point2.webId + "," + point3.webId
+    Set compressedData = client.StreamSet.GetRecordedAdHoc(webIds, True, 1000)
 ```
 
-Finally, call piwebapi.CreateObjects(). It is a good practice to call those methods before controller's method execution. Please refer to the example below:
+### Send values in bulk using the StreamSet/UpdateValuesAdHoc
 
-```js
-var piWebApiApp = angular.module("PiWebApiSampleApp", ['piwebapiClientLib']);
-piWebApiApp.run(function(piwebapi) {
-    piwebapi.SetServiceBaseUrl("https://webservername/piwebapi");
-    piwebapi.SetBasicAuth("username","password");
-    piwebapi.CreateObjects(); 
-});
+```vb# 
+    Call GetPIPoints
+    Dim streamValuesItems As New PIItemsStreamValues
+    Dim streamValue1 As New PIStreamValues
+    Dim streamValue2 As New PIStreamValues
+    Dim streamValue3 As New PIStreamValues
+    Dim value1 As New PITimedValue
+    Dim value2 As New PITimedValue
+    Dim value3 As New PITimedValue
+    Dim value4 As New PITimedValue
+    Dim value5 As New PITimedValue
+    Dim value6 As New PITimedValue
+
+    streamValuesItems.CreateItemsArray (3)
+    value1.SetValueWithInt (2)
+    value1.Timestamp = "*-1d"
+    value2.SetValueWithInt (3)
+    value2.Timestamp = "*-2d"
+    value3.SetValueWithInt (4)
+    value3.Timestamp = "*-1d"
+    value4.SetValueWithInt (5)
+    value4.Timestamp = "*-2d"
+    value5.SetValueWithInt (6)
+    value5.Timestamp = "*-1d"
+    value6.SetValueWithInt (7)
+    value6.Timestamp = "*-2d"
+
+    streamValue1.webId = point1.webId
+    streamValue1.CreateItemsArray (2)
+    Call streamValue1.SetItem(0, value1)
+    Call streamValue1.SetItem(1, value2)
+    Call streamValuesItems.SetItem(0, streamValue1)
+
+    streamValue2.webId = point2.webId
+    streamValue2.CreateItemsArray (2)
+    Call streamValue2.SetItem(0, value3)
+    Call streamValue2.SetItem(1, value4)
+    Call streamValuesItems.SetItem(1, streamValue2)
+
+    streamValue3.webId = point2.webId
+    streamValue3.CreateItemsArray (2)
+    Call streamValue3.SetItem(0, value5)
+    Call streamValue3.SetItem(1, value6)
+    Call streamValuesItems.SetItem(2, streamValue3)
+
+    Dim response As ApiResponsePIItemsItemsSubstatus
+    Set response = client.StreamSet.UpdateValuesAdHocWithHttpInfo(streamValuesItems)
 ```
 
 
-## Making HTTP requests
+### Get AF Attribute given an AF Element path
 
-Below there are some examples of making HTTP requests with this library:
-
-```js
-piwebapi.home.homeGet({}).then(function(response) { });
-piwebapi.dataServer.dataServerGetByPath('\\\\' + $scope.piServerName).then(function (response) {});
-piwebapi.point.pointGetByPath('\\\\' + $scope.piServerName + '\\' + $scope.piPointName, null, null).then(function (response) {});
-piwebapi.stream.streamGetRecorded($scope.webId, null, null, $scope.endTime,  null, null, null, null, $scope.startTime).then(function (response) {});
-piwebapi.stream.streamGetInterpolated($scope.webId, null, $scope.endTime, null,null, $scope.interval,  null, null, null, null,null, $scope.startTime).then(function (response) {});
+```vb# 
+    Set elem = client.element.GetByPath(ERD.CurrentContext(ThisDisplay))
+    ElemDesc.Contents = elem.Description
+    Dim attributes As PIItemsAttribute
+    Set attributes = client.element.GetAttributes(elem.webId, 1000, False, False, False, 0)
 ```
 
-If you know the name of the action and controller, you probably need to make a call similar to:
 
-piwebapi.{controllerName}.{controllerName}{actionName}(inputs);
+### Get current value given an AF Attribute path
 
-Please read the PI Web API programming reference to find out the names of the actions, controllers and inputs.
+```vb# 
+    attributePath = ERD.CurrentContext(ThisDisplay) + "|" + AttrList.Text
+    Set attr = client.attribute.GetByPath(attributePath)
+    Set timedValue = client.Stream.GetEnd(attr.webId)
+    AttrValue.Contents = timedValue.value
+```
 
-If you want to find out the order of the inputs, please refer to piwebapi.js and search for the method you want to use. 
+### Get Event Frames given an AF database path
 
+```vb# 
+    Set db = client.AssetData.GetByPath(dbPath)
+    Set efs = client.AssetData.GetEventFrames(db.webId, False, False, 100, True, 0, "", "*", "", elem.Name, elem.templateName, "", "", "None", "", "", "*-900", "*")
+```
+
+ 
 
 
 ## Documentation for API Endpoints
