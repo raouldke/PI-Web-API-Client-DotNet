@@ -273,15 +273,6 @@ namespace OSIsoft.PIDevClub.PIWebApiClient
             }
         }
 
-        public ISearchApi Seearch
-        {
-            get
-            {
-                 Configuration config = GetConfiguration(true);
-                return new SearchApi(config);
-            }
-        }
-
 
         public ISecurityIdentityApi SecurityIdentity
         {

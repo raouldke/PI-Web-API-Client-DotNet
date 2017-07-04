@@ -53,7 +53,6 @@
     <Compile Include="Api\AnalysisRuleApi.cs" />
     <Compile Include="Api\AnalysisRulePlugInApi.cs" />
     <Compile Include="Api\AnalysisTemplateApi.cs" />
-    <Compile Include="Api\AssetDataApiApi.cs" />
     <Compile Include="Api\AssetDatabaseApi.cs" />
     <Compile Include="Api\AssetServerApi.cs" />
     <Compile Include="Api\AttributeApi.cs" />
@@ -73,8 +72,6 @@
     <Compile Include="Api\EventFrameApi.cs" />
     <Compile Include="Api\HomeApi.cs" />
     <Compile Include="Api\PointApi.cs" />
-    <Compile Include="Api\PutApi.cs" />
-    <Compile Include="Api\SearchApi.cs" />
     <Compile Include="Api\SecurityIdentityApi.cs" />
     <Compile Include="Api\SecurityMappingApi.cs" />
     <Compile Include="Api\StreamApi.cs" />
@@ -107,7 +104,6 @@
     <Compile Include="Model\PIAttributeTrait.cs" />
     <Compile Include="Model\PIAttributeValueQuery.cs" />
     <Compile Include="Model\PICacheInstance.cs" />
-    <Compile Include="Model\PICategory.cs" />
     <Compile Include="Model\PIDataServer.cs" />
     <Compile Include="Model\PIElement.cs" />
     <Compile Include="Model\PIElementCategory.cs" />
@@ -133,7 +129,6 @@
     <Compile Include="Model\PIItemsAttributeTemplate.cs" />
     <Compile Include="Model\PIItemsAttributeTrait.cs" />
     <Compile Include="Model\PIItemsCacheInstance.cs" />
-    <Compile Include="Model\PIItemsCategory.cs" />
     <Compile Include="Model\PIItemsDataServer.cs" />
     <Compile Include="Model\PIItemsElement.cs" />
     <Compile Include="Model\PIItemsElementCategory.cs" />
@@ -146,7 +141,6 @@
     <Compile Include="Model\PIItemsItemEventFrame.cs" />
     <Compile Include="Model\PIItemsItemPoint.cs" />
     <Compile Include="Model\PIItemsItemsSubstatus.cs" />
-    <Compile Include="Model\PIItemsPlugIn.cs" />
     <Compile Include="Model\PIItemsPoint.cs" />
     <Compile Include="Model\PIItemsPointAttribute.cs" />
     <Compile Include="Model\PIItemsSecurityEntry.cs" />
@@ -163,8 +157,6 @@
     <Compile Include="Model\PIItemsTimeRulePlugIn.cs" />
     <Compile Include="Model\PIItemsUnitClass.cs" />
     <Compile Include="Model\PILanding.cs" />
-    <Compile Include="Model\PILinks.cs" />
-    <Compile Include="Model\PIPlugIn.cs" />
     <Compile Include="Model\PIPoint.cs" />
     <Compile Include="Model\PIPointAttribute.cs" />
     <Compile Include="Model\PIRequest.cs" />
@@ -172,20 +164,6 @@
     <Compile Include="Model\PIResponse.cs" />
     <Compile Include="Model\PISearchByAttributeElement.cs" />
     <Compile Include="Model\PISearchByAttributeEventFrame.cs" />
-    <Compile Include="Model\PISearchCrawlerSetting.cs" />
-    <Compile Include="Model\PISearchCrawlerSettings.cs" />
-    <Compile Include="Model\PISearchFieldResult.cs" />
-    <Compile Include="Model\PISearchFieldResults.cs" />
-    <Compile Include="Model\PISearchSearchError.cs" />
-    <Compile Include="Model\PISearchSearchIndexPage.cs" />
-    <Compile Include="Model\PISearchSearchIndexPageLinks.cs" />
-    <Compile Include="Model\PISearchSearchResult.cs" />
-    <Compile Include="Model\PISearchSearchResultAFObject.cs" />
-    <Compile Include="Model\PISearchSearchResultAttribute.cs" />
-    <Compile Include="Model\PISearchSearchResultDisplayAttribute.cs" />
-    <Compile Include="Model\PISearchSearchResultMatches.cs" />
-    <Compile Include="Model\PISearchSearchResultParent.cs" />
-    <Compile Include="Model\PISearchSearchResults.cs" />
     <Compile Include="Model\PISecurity.cs" />
     <Compile Include="Model\PISecurityEntry.cs" />
     <Compile Include="Model\PISecurityIdentity.cs" />
@@ -198,7 +176,6 @@
     <Compile Include="Model\PISummaryValue.cs" />
     <Compile Include="Model\PISystemLanding.cs" />
     <Compile Include="Model\PISystemStatus.cs" />
-    <Compile Include="Model\PISystemVersion.cs" />
     <Compile Include="Model\PITable.cs" />
     <Compile Include="Model\PITableCategory.cs" />
     <Compile Include="Model\PITableData.cs" />

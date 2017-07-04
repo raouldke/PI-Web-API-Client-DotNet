@@ -30,7 +30,7 @@ namespace LibraryTest
     {
         static void Main(string[] args)
         {
-            PIWebApiClient client = new PIWebApiClient("https://marc-web-sql.marc.net/piwebapi", false, "marc.adm", "kk");
+            PIWebApiClient client = new PIWebApiClient("https://marc-web-sql.marc.net/piwebapi", true);
 
             PIDataServer dataServer = client.DataServer.GetByPath("\\\\MARC-PI2016");
             PIPoint createdPoint = client.Point.GetByPath("\\\\MARC-PI2016\\SINUSOIDR1259", null);
