@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSIsoft.PIDevClub.PIWebApiClient", "OSIsoft.PIDevClub.PIWebApiClient\OSIsoft.PIDevClub.PIWebApiClient.csproj", "{464D36EF-CA88-435B-AD1D-B9469D74D5D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSIsoft.PIDevClub.PIWebApiClient.Test", "OSIsoft.PIDevClub.PIWebApiClient.Test\OSIsoft.PIDevClub.PIWebApiClient.Test.csproj", "{226AA36A-31C0-4B06-9797-BAEEF9CD6C8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryTest", "LibraryTest\LibraryTest.csproj", "{A117B085-2BEA-406D-BAB5-E0E3C1DB8ED5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{464D36EF-CA88-435B-AD1D-B9469D74D5D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{464D36EF-CA88-435B-AD1D-B9469D74D5D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{464D36EF-CA88-435B-AD1D-B9469D74D5D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{464D36EF-CA88-435B-AD1D-B9469D74D5D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{226AA36A-31C0-4B06-9797-BAEEF9CD6C8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{226AA36A-31C0-4B06-9797-BAEEF9CD6C8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{226AA36A-31C0-4B06-9797-BAEEF9CD6C8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{226AA36A-31C0-4B06-9797-BAEEF9CD6C8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A117B085-2BEA-406D-BAB5-E0E3C1DB8ED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A117B085-2BEA-406D-BAB5-E0E3C1DB8ED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A117B085-2BEA-406D-BAB5-E0E3C1DB8ED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A117B085-2BEA-406D-BAB5-E0E3C1DB8ED5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
