@@ -10,6 +10,17 @@ This repository has the source code package of the PI Web API Client libraries f
  - PI Web API 2017 installed within your domain using Kerberos or Basic Authentication.
  - .NET Framework 4.5.2
 
+## Installation
+
+ - Download this source code
+ - Create a new folder under %PIHOME% named WebAPIClient, if it doesn't exist.
+ - Create a new folder under WebAPIClient named DotNet, if it doesn't exist.
+ - Copy all files from the dist folder to %PIHOME%\WebAPIClient\DotNet.
+
+ 
+## Usage
+
+Create a new .NET Framework project (Console Application for instance). On the Solution Explorer, right click on Dependencies and then "Add Reference...". Click on the Browse button and navigate to the %PIHOME%\WebAPIClient\DotNet folder. Finally, add the OSIsoft.PIDevClub.PIWebApiClient.dll to your VS project.
 
 ## Documentation
 
