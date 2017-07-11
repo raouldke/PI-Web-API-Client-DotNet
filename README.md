@@ -2,8 +2,8 @@ PI Web API Client libraries for .NET Framework
 ===
 
 
-## Organization
-This repository has the source code package of the PI Web API Client libraries for .NET Framework.
+## Overview
+This repository has the source code package of the PI Web API Client libraries for .NET Framework. Although PI AF SDK can also be used with .NET Framework, the advantage of using this client library is that you don't need to install PI AF Client on your machine. 
 
 ## Requirements
 
@@ -24,7 +24,7 @@ Create a new .NET Framework project (Console Application for instance). On the S
 
 ## Documentation
 
-All classes and methods are described on the [DOCUMENTATION.md](DOCUMENTATION.md). 
+All classes and methods are described on the [DOCUMENTATION](DOCUMENTATION.md). 
 
  
 ## Examples
